@@ -1,9 +1,8 @@
 import React from 'react'
 import './index.css'
-import NavBar from '..\components\NavBar'
 
 const HomePage = () => {
-    return(
+    return (
         <>
             <div className = 'container-home-page'>
                 <div className = 'text-wrapper'>
