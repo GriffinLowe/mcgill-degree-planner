@@ -1,8 +1,8 @@
-import React from 'react'
-import './index.css'
+//// import React from 'react'
+import './index.scss'
 
 export default Programs = (handleSelectFaculty, handelSelectProgram) => {
-   
+    
     // Reducers:
     function ProgramReducer(programState, action, programObject) {
         switch(action) {
@@ -11,7 +11,7 @@ export default Programs = (handleSelectFaculty, handelSelectProgram) => {
                 break;
             case 'delete':
                 if (programState.remove(program)) {
-                   
+                    
                 }
                 break;
             default:
@@ -26,7 +26,7 @@ export default Programs = (handleSelectFaculty, handelSelectProgram) => {
         .then((data) => (data.json()))
         .then((data) => (setPrograms(data)))
         .catch(console.log(error));
-       
+        
         // Define faculties:
         const faculties = [
             { key: 'science', value: 'science', display: 'Science' },
@@ -43,25 +43,22 @@ export default Programs = (handleSelectFaculty, handelSelectProgram) => {
 
     return (
         <div className='programs-container'>      
-        <div className='faculty-dropdown-wrapper'>
-            <label htmlFor='faculty-select'>Select your faculty</label>
-            <select
-            className='dropdown'
-            name='faculty-select'
-            onChange={(e) => setFaculty(e.target.value)}
-            value={faculty}
-            >
-            <option value=''>-- Select Faculty --</option>
-            {faculties.map((item) => (
-                <option key={item.key} value={item.value}>
-                {item.display}
-                </option>
-            ))}
-            </select>
+            <div className='faculty-dropdown-wrapper'>
+                <label htmlFor='faculty-select'>Select your faculty</label>
+                <select
+                className='dropdown'
+                name='faculty-select'
+                onChange={(e) => setFaculty(e.target.value)}
+                value={faculty}
+                >
+                <option value=''>-- Select Faculty --</option>
+                {faculties.map((item) => (
+                    <option key={item.key} value={item.value}>
+                    {item.display}
+                    </option>
+                ))}
+                </select>
+            </div>
         </div>
-
-        {/* Display selected faculty for demo/debug */}
-        {faculty && <p>You selected: {faculty}</p>}
-        </div>
-    );
-    }
+        );
+}
