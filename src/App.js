@@ -2,9 +2,9 @@ import logo from './logo.svg';
 import './App.css';
 import {useState, createContext, useReducer} from 'react';
 import {Routes, Route} from 'react-router-dom';
-import NavBar from './/components/NavBar';
-import HomePage from '//pages/home'
-import ProgramsPage from '//pages/programs'
+import NavBar from './components/NavBar';
+import HomePage from './pages/home'
+import ProgramsPage from './pages/programs'
 
 // Defining global context:
 const AppContext = createContext();
@@ -18,9 +18,9 @@ function App() {
           console.log("INFO: selectedProgramReducer: " + String(programObject) + " successfully written to globalSelectedProgram")
           return new Set([programObject, ...globalSelectedProgram]);
         case 'delete':
-          programState.remove(programObject);
+          globalSelectedProgram.remove(programObject);
           console.log("INFO: selectedProgramReducer: " + String(programObject) + " successfully deleted from globalSelectedProgram")          
-          return new Set([...programState])
+          return new Set([...globalSelectedProgram])
         default:
           console.log("ERROR: Program Reducer: Invalid action type specified");
           return globalSelectedProgram;
@@ -28,16 +28,15 @@ function App() {
   };
 
   // Reducer for globalSelectedCourses state
-  const selectedCoursesReducer = (selectedCoursesState, selectedCourseObject, action) => {
+  const selectedCoursesReducer = (selectedCourseObject, action) => {
     switch(action) {
         case 'write':
-          selectedCoursesState.add(selectedCourseObject);
-          console.log('INFO: selectedCoursesReducer:' + String(selectedCoursesObject) + ' succesfully written to globalSelectedCourses');
-          break;
+          console.log('INFO: selectedCoursesReducer:' + String(selectedCourseObject) + ' succesfully written to globalSelectedCourses');
+          return new Set([selectedCourseObject, ...globalSelectedCourses])
         case 'delete':
-          selectedCoursesState.remove(selectCourseObject);
-          console.log("INFO: selectedCoursesReducer: " + String(selectedCoursesObject) + ' succesfully deleted from globalSelectedCourses');
-          break;
+          globalSelectedCourses.remove(selectedCourseObject);
+          console.log("INFO: selectedCoursesReducer: " + String(selectedCourseObject) + ' succesfully deleted from globalSelectedCourses');
+          return new Set([...globalSelectedCourses]);
         default:
           console.log("ERROR: selectedCoursesReducer: action specified not recognized");
     }
