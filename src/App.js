@@ -1,19 +1,56 @@
 import logo from './logo.svg';
 import './App.css';
-import NavBar from 'components/NavBar'
-import Footer from 'components/Footer'
+import {useState, createContext, useReducer} from 'react';
+import {Routes, Route} from 'react-dom-router';
+import {NavBar} from '/components/NavBar';
+import {Footer} from '/components/Footer';
+import 'pages';
+
+// Defining global context:
+AppContext = createContext();
 
 function App() {
 
-  const [faculty, setFaculty] = useState('science');
-  
-  
-  function handleSelect(faculty) {
-    setFaculty(faculty);
-  }
+  // Reducer for globalSelectedProgram state
+  const selectedProgramReducer = (programObject, action) => {
+      switch(action) {
+          case 'write':
+              newSelectedProgram = new Set();
+              newSelectedProgram
+          case 'delete':
+              programState.remove(programObject);
+              break;
+          default:
+              console.log("Program Reducer: Invalid action type specified");
+      }
+  };
 
+  // Reducer for globalSelectedCourses state
+  const selectedCoursesReducer = (selectedCoursesState, selectedCourseObject, action) => {
+      switch(action) {
+          case 'write':
+              selectedCoursesState.add(selectedCourseObject);
+              console.log('INFO: selectedCoursesReducer:' + String(selectedCoursesObject) + ' succesfully written to globalSelectedCourses');
+              break;
+          case 'delete':
+              selectedCoursesState.remove(selectCourseObject);
+              console.log("INFO: selectedCoursesReducer: " + String(selectedCoursesObject) + ' succesfully deleted from globalSelectedCourses');
+              break;
+          default:
+              console.log("ERROR: selectedCoursesReducer: action specified not recognized");
+      }
+  };
+
+
+  // Defining global states:
+  const [globalSelectedProgram, programDispatch] = useReducer(selectedProgramReducer, new Set()); // Must be reducer for minor/ major logic
+  const [globalFaculty, setFaculty] = useState(null);
+  const [globalSelectedCourses, coursesDispatch] = useReducer(selectedCoursesReducer, new Set());
+
+  // Main app navigation
   return (
-    <Router>
+    <AppContext.Provider value = {[globalSelectedProgram, programDispatch, globalFaculty, setFaculty, globalSelectedCourses, coursesDispatch]}>
+      <div className="App">
       <NavBar></NavBar>
       <Routes>
         <Route></Route>
@@ -23,8 +60,9 @@ function App() {
         <Route></Route>
       </Routes>
       <Footer></Footer>
-    </Router>
-  );
-}
+    </div>
+    </AppContext.Provider>
+    );
+  }
 
 export default App;
