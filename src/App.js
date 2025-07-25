@@ -3,8 +3,10 @@ import './App.css';
 import {useState, createContext, useReducer} from 'react';
 import { Routes, Route } from 'react-router-dom';
 import NavBar from './components/NavBar';
-import HomePage from './pages/home'
-import ProgramsPage from './pages/programs'
+import HomePage from './pages/home';
+import ProgramsPage from './pages/programs';
+import CoursesPage from './pages/courses';
+import ReviewPage from './pages/review';
 
 // Defining global context:
 const AppContext = createContext();
@@ -56,6 +58,8 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/programs" element={<ProgramsPage />} />
+        <Route path="/courses" element={<CoursesPage />} />
+        <Route path="/review" element={<ReviewPage />} />
       </Routes>
     </div>
     </AppContext.Provider>
