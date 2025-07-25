@@ -21,11 +21,13 @@ export default Programs = (handleSelectFaculty, handelSelectProgram) => {
 
 
     useEffect(() => {
-        // Get programs
-        fetch("*** NEED TO FIND API KEYS***")
-        .then((data) => (data.json()))
-        .then((data) => (setPrograms(data)))
-        .catch(console.log(error));
+        // Populate with dummy program data for testing
+        const samplePrograms = [
+            { id: 1, name: 'Computer Science' },
+            { id: 2, name: 'Software Engineering' },
+            { id: 3, name: 'Mechanical Engineering' }
+        ];
+        setPrograms(samplePrograms);
         
         // Define faculties:
         const faculties = [

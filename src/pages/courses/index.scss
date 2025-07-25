@@ -1,0 +1,71 @@
+.courses-page {
+  padding: 1rem;
+  color: #fff;
+  background: #151515;
+  min-height: 100vh;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #333;
+  border-radius: 4px;
+  background: #222;
+  color: #fff;
+}
+
+.results {
+  margin-bottom: 1rem;
+}
+
+.course-item {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #333;
+  margin-bottom: 0.5rem;
+  cursor: grab;
+  border-radius: 4px;
+  background: #222;
+}
+
+.semester-nav {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.semester-nav button {
+  margin: 0 0.5rem;
+  background: #333;
+  color: #fff;
+  border: none;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+.semester-dropzone {
+  min-height: 3rem;
+  border: 2px dashed #555;
+  padding: 0.5rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.planned-course {
+  padding: 0.25rem 0.5rem;
+  background: #333;
+  margin-bottom: 0.25rem;
+  border-radius: 4px;
+}
+
+.review-button-wrapper {
+  text-align: right;
+}
+
+.review-button {
+  background: #0a84ff;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+}

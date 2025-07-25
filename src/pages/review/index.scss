@@ -1,0 +1,29 @@
+.review-page {
+  display: flex;
+  background: #151515;
+  color: #fff;
+  min-height: 100vh;
+}
+
+.review-left {
+  width: 40%;
+  overflow-y: auto;
+  border-right: 1px solid #333;
+  padding: 1rem;
+}
+
+.review-right {
+  flex: 1;
+  padding: 1rem;
+}
+
+.review-semester {
+  margin-bottom: 1rem;
+}
+
+.review-course {
+  padding: 0.25rem 0.5rem;
+  background: #333;
+  margin-bottom: 0.25rem;
+  border-radius: 4px;
+}
