@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import {useState, createContext, useReducer} from 'react';
-import {Routes, Route} from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import HomePage from './pages/home'
 import ProgramsPage from './pages/programs'
@@ -54,8 +54,8 @@ function App() {
       <div className="App">
       <NavBar></NavBar>
       <Routes>
-        <Route exact path = '//github.com/GriffinLowe/mcgill-degree-planner/tree/master/src/pages/home' component={HomePage}></Route>
-        <Route exact path = '//github.com/GriffinLowe/mcgill-degree-planner/tree/master/src/pages/programs' component={ProgramsPage}></Route>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/programs" element={<ProgramsPage />} />
       </Routes>
     </div>
     </AppContext.Provider>
