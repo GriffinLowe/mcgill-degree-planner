@@ -44,13 +44,26 @@ function App() {
 
 
   // Defining global states:
-  const [globalSelectedProgram, programDispatch] = useReducer(selectedProgramReducer, new Set()); // Must be reducer for minor/ major logic
+  const [globalSelectedProgram, setGlobalSelectedProgram] = useState(new Set()); // Must be reducer for minor/ major logic
   const [globalFaculty, setFaculty] = useState(null);
-  const [globalSelectedCourses, coursesDispatch] = useReducer(selectedCoursesReducer, new Set());
+  const [globalSelectedCourses, setGlobalSelectedCourses] = useState(new Set());
+  const [globalPrograms, setGlobalPrograms] = useState(null); 
+
+  // Creating global context JSON:
+  const globalVars = {
+    'globalSelectedProgram': globalSelectedProgram,
+    'programDispatch': setGlobalSelectedProgram,
+    'globalFaculty': globalFaculty,
+    'setFaculty': setFaculty,
+    'globalSelectedCourses': globalSelectedCourses,
+    'coursesDispatch': setGlobalSelectedCourses,
+    'globalPrograms': globalPrograms,
+    'setGlobalPrograms': setGlobalPrograms
+  }
 
   // Main app navigation
   return (
-    <AppContext.Provider value = {[globalSelectedProgram, programDispatch, globalFaculty, setFaculty, globalSelectedCourses, coursesDispatch]}>
+    <AppContext.Provider value = {globalVars}>
       <div className="App">
       <NavBar></NavBar>
       <Routes>
